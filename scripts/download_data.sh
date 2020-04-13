@@ -11,33 +11,33 @@ tools=$base/tools
 
 # link default training data for easier access
 
-mkdir -p $data/wikitext-2
+mkdir -p $data/dylan-1
 
 for corpus in train valid test; do
-    absolute_path=$(realpath $tools/pytorch-examples/word_language_model/data/wikitext-2/$corpus.txt)
-    ln -snf $absolute_path $data/wikitext-2/$corpus.txt
+    absolute_path=$(realpath $tools/pytorch-examples/word_language_model/data/dylan-1/$corpus.txt)
+    ln -snf $absolute_path $data/dylan-1/$corpus.txt
 done
 
 # download a different interesting data set!
 
-mkdir -p $data/trump
+mkdir -p $data/dylan
 
-mkdir -p $data/trump/raw
+mkdir -p $data/dylan/raw
 
-wget https://raw.githubusercontent.com/ryanmcdermott/trump-speeches/master/speeches.txt
-mv speeches.txt $data/trump/raw
+wget https://github.com/sugarsword/pytorch-rnn-lm/blob/test/lyrics.txt
+mv lyrics.txt $data/dylan/raw
 
 # preprocess slightly
 
-cat $data/trump/raw/speeches.txt | python $base/scripts/preprocess_raw.py > $data/trump/raw/speeches.cleaned.txt
+cat $data/dylan/raw/lyrics.txt | python $base/scripts/preprocess_raw.py > $data/dylan/raw/lyrics.cleaned.txt
 
 # tokenize, fix vocabulary upper bound
 
-cat $data/trump/raw/speeches.cleaned.txt | python $base/scripts/preprocess.py --vocab-size 5000 --tokenize --lang "en" > \
-    $data/trump/raw/speeches.preprocessed.txt
+cat $data/dylan/raw/lyrics.cleaned.txt | python $base/scripts/preprocess.py --vocab-size 5000 --tokenize --lang "en" > \
+    $data/dylan/raw/lyrics.preprocessed.txt
 
 # split into train, valid and test
 
-head -n 500 $data/trump/raw/speeches.preprocessed.txt > $data/trump/valid.txt
-head -n 1000 $data/trump/raw/speeches.preprocessed.txt | tail -n 500 > $data/trump/test.txt
-tail -n 3260 $data/trump/raw/speeches.preprocessed.txt > $data/trump/train.txt
+head -n 500 $data/dylan/raw/lyrics.preprocessed.txt > $data/dylan/valid.txt
+head -n 1000 $data/dylan/raw/lyrics.preprocessed.txt | tail -n 500 > $data/dylan/test.txt
+tail -n 3260 $data/dylan/raw/lyrics.preprocessed.txt > $data/dylan/train.txt
