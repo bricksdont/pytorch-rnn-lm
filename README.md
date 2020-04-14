@@ -49,6 +49,7 @@ Number of epochs    Embedding size  Hidden size Dropout     Test loss   PPL     
  40                 300             300         0.7         4.65        104.29      777 sec
  40                 300             300         0.4         4.65        104.39      717 sec
  
+ 
  The best parameters are: 40-300-0.5
  
  
