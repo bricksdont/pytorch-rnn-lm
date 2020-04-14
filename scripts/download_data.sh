@@ -11,11 +11,11 @@ tools=$base/tools
 
 # link default training data for easier access
 
-mkdir -p $data/dylan-1
+mkdir -p $data/wikitext-2
 
 for corpus in train valid test; do
-    absolute_path=$(realpath $tools/pytorch-examples/word_language_model/data/dylan-1/$corpus.txt)
-    ln -snf $absolute_path $data/dylan-1/$corpus.txt
+    absolute_path=$(realpath $tools/pytorch-examples/word_language_model/data/wikitext-2/$corpus.txt)
+    ln -snf $absolute_path $data/wikitext-2/$corpus.txt
 done
 
 # download a different interesting data set!
