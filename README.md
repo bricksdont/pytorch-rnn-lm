@@ -40,6 +40,8 @@ The training process can be interrupted at any time, and the best checkpoint wil
 Table for training parameter changes:
 
 Number of epochs    Embedding size  Dropout     Test loss   PPL
+ 40                 200             0.5         4.66        105.69
+ 
 
 
 Generate (sample) some text from a trained model with:
