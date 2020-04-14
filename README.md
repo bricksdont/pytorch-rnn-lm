@@ -37,6 +37,11 @@ Train a model:
 
 The training process can be interrupted at any time, and the best checkpoint will always be saved.
 
+Table for training parameter changes:
+
+Number of epochs    Embedding size  Dropout     Test loss   PPL
+
+
 Generate (sample) some text from a trained model with:
 
     ./scripts/generate.sh
