@@ -24,8 +24,8 @@ mkdir -p $data/dylan
 
 mkdir -p $data/dylan/raw
 
-wget https://github.com/sugarsword/pytorch-rnn-lm/blob/test/lyrics.txt
-mv lyrics.txt $data/dylan/raw
+wget https://mulhod.github.io/bob_dylan_lyrics/full_lyrics_file_dumps/all_songs_with_metadata.txt
+mv all_songs_with_metadata.txt $data/dylan/raw/lyrics.txt
 
 # preprocess slightly
 
