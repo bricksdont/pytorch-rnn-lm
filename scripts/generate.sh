@@ -13,10 +13,15 @@ mkdir -p $samples
 num_threads=4
 device=""
 
+for strat in sampling greedy; do
+
 (cd $tools/pytorch-examples/word_language_model &&
     CUDA_VISIBLE_DEVICES=$device OMP_NUM_THREADS=$num_threads python generate.py \
         --data $data/trump \
-        --words 100 \
+        --words 10 \
         --checkpoint $models/model.pt \
-        --outf $samples/sample
+        --outf $samples/sample.$strat \
+        --strategy $strat
 )
+
+done
